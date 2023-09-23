@@ -1,6 +1,7 @@
 import streamlit as st
 import preprocessor
 import helper
+import matplotlib.pyplot as plt
 
 st.sidebar.title("WhatsApp Chat Analyzer")
 
@@ -19,7 +20,10 @@ if uploaded_file is not None:
     selected_user = st.sidebar.selectbox("Show analysis with respect to users", user_list)
 
     if st.sidebar.button("Show analysis"):
-        num_messages, words, num_media_messages = helper.fetch_stats(selected_user, df)
+
+        # stats
+
+        num_messages, words, num_media_messages, num_links = helper.fetch_stats(selected_user, df)
         col1, col2, col3, col4 = st.columns(4)
 
         with col1:
@@ -33,3 +37,35 @@ if uploaded_file is not None:
         with col3:
             st.header("Media Shared")
             st.title(num_media_messages)
+
+        with col4:
+            st.header("Links Shared")
+            st.title(num_links)
+
+        #  busiest user
+
+        if selected_user == 'Overall':
+            st.title('Most Busy Users')
+            x,new_df = helper.most_busy_users(df)
+            fig, ax = plt.subplots()
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                ax.bar(x.index, x.values,color='red')
+                plt.xticks(rotation='vertical')
+                st.pyplot(fig)
+            with col2:
+                st.dataframe(new_df)
+
+        # Wordcloud
+        st.title("Wordcloud")
+        df_wc = helper.create_wordcloud(selected_user, df)
+        fig, ax = plt.subplots()
+        ax.imshow(df_wc)
+        st.pyplot(fig)
+
+        # most common word
+        most_common_df = helper.most_common_words(selected_user, df)
+
+        st.dataframe(most_common_df)
