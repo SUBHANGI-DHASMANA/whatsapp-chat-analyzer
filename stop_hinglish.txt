@@ -45,6 +45,7 @@ afterwards
 again
 against
 agar
+agr
 ain
 aint
 ain't
@@ -332,6 +333,8 @@ his
 hither
 hm
 hmm
+hn
+hnn
 ho
 hoga
 hoge
@@ -528,14 +531,17 @@ kitni
 kitno
 kiya
 kiye
+kl
 know
 known
 knows
 ko
+koo
 koi
 kon
 konsa
 koyi
+kra
 krna
 krne
 kuch
@@ -613,6 +619,7 @@ mightn
 mightnt
 mightn't
 mil
+mila
 mjhe
 more
 moreover
@@ -702,6 +709,7 @@ pehli
 people
 per
 perhaps
+phir
 phla
 phle
 phli

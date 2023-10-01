@@ -2,4 +2,6 @@ streamlit
 urlextract
 matplotlib
 wordcloud
+seaborn
+emoji
 # streamlit run app.py
